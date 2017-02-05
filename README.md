@@ -18,5 +18,11 @@ cd ionic2-marketcloud-starter
 npm install
 ```
 
+Remember to replace the demo publicKey with your app's public key. You might need to clear the browser's local storage after the key substitution.
+```
+// In your browser's console
+window.localStorage.clear()
+```
+
 ## Documentation
 This project uses Marketcloud Javascript sdk, for any information about it check the [official documentation](http://www.marketcloud.it/documentation)
