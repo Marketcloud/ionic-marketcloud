@@ -6,8 +6,9 @@ import { CategoriesPage } from '../pages/categories/categories';
 import { ItemPage } from '../pages/item/item';
 import { CartPage } from '../pages/cart/cart';
 import { ConfigurationService } from '../providers/configuration-service';
-import { Storage } from '@ionic/storage';
-
+import { IonicStorageModule } from '@ionic/storage'
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
@@ -17,7 +18,10 @@ import { Storage } from '@ionic/storage';
     CartPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    BrowserModule,
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,8 +33,7 @@ import { Storage } from '@ionic/storage';
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ConfigurationService,
-    Storage
+    ConfigurationService
   ]
 })
 export class AppModule {}
