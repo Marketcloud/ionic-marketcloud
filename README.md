@@ -18,7 +18,7 @@ cd ionic2-marketcloud-starter
 npm install
 ```
 
-Remember to replace the demo publicKey with your app's public key. You might need to clear the browser's local storage after the key substitution.
+### Remember to replace the demo publicKey with your app's public key. You might need to clear the browser's local storage after the key substitution.
 ```
 // In your browser's console
 window.localStorage.clear()
