@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import {BraintreeProvider} from '../../providers/braintree/braintree';
 import {ConfigurationService} from '../../providers/configuration-service';
@@ -24,6 +24,8 @@ import { LoadingController } from 'ionic-angular';
 export class CheckoutPage {
   step : number;
 
+  cart : any = {items : []};
+
   currentStep : string;
 
   address : any;
@@ -37,6 +39,7 @@ export class CheckoutPage {
     public navParams: NavParams,
     private braintreeClient: BraintreeProvider,
     public configuration: ConfigurationService,
+    public alertCtrl  :AlertController,
     public marketcloud: MarketcloudService) {
 
     // Initial step counter
@@ -58,6 +61,20 @@ export class CheckoutPage {
       email  :"john.doe@example.com",
       address1 : "Fake Street"
     };
+
+    this.marketcloud.client.carts.getById(this.configuration.get('cart_id'))
+    .then((response) => {
+      this.cart = response.data;
+    })
+    .catch((error) =>{
+      let alert = this.alertCtrl.create({
+          title: 'Oops',
+          subTitle: 'An error has occurred, unable to load order items.',
+          buttons: ['Ok']
+        });
+
+        alert.present();
+    })
    
   }
 

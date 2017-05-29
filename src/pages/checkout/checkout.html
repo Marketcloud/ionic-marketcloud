@@ -118,10 +118,41 @@
 
 
 
-  <ion-list [hidden]="currentStep !== 'Review'">
-    <ion-item>Review</ion-item>
-  </ion-list>
+  <div [hidden]="currentStep !== 'Review'">
 
+    <ion-card>
+    <ion-card-header>Review</ion-card-header>
+    <ion-card-content *ngIf="cart.items.length === 0">
+      Your cart is empty!
+    </ion-card-content>
+   <ion-list no-lines>
+     <ion-item *ngFor="let product of cart.items; let i = index;">
+    <ion-avatar item-left>
+      <img src="{{product.images[0]}}">
+    </ion-avatar>
+    <h2>{{product.name}} <b>x {{product.quantity}}</b></h2>
+    <div [ngSwitch]="product?.price_discount">
+    <p *ngSwitchCase="true">€ <span st>{{product.price}}</span> <span>{{product.price_discount}}</span></p>
+    <p *ngSwitchDefault>€ <span style="text-decoration: line-through;">{{product.price}}</span> <span>{{product.price_discount}}</span></p>
+    </div>
+    <div>
+      <button primary large>
+      <ion-icon name="add" (click)="increaseQuantity(i)"></ion-icon>
+    </button>
+    <button primary large>
+    <ion-icon name="remove" (click)="decreaseQuantity(i)"></ion-icon>
+    </button>
+    </div>
+  </ion-item>
+</ion-list>
+  <ion-card-content *ngIf="cart.items.length > 0">
+      <div>Total for this order is $ {{cart.total}}</div>
+  </ion-card-content>
+ 
+    
+</ion-card>
+
+  </div>
 
 
 
