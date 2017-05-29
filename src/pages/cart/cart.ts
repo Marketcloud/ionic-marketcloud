@@ -3,6 +3,7 @@ import { NavController, NavParams,AlertController  } from 'ionic-angular';
 import { MarketcloudService } from '../../providers/marketcloud-service'; 
 import {ConfigurationService} from '../../providers/configuration-service';
 
+import {CheckoutPage} from '../checkout/checkout';
 /*
   Generated class for the Cart page.
 
@@ -100,6 +101,12 @@ export class CartPage {
   	}).reduce((a,b) => {
   		return a+b;
   	});
+  }
+
+
+  proceedToCheckout() {
+    // Showing single product details
+    this.navCtrl.push(CheckoutPage);
   }
 
 }

@@ -42,14 +42,17 @@
     </div>
   </ion-item>
 </ion-list>
-  
+  <ion-card-content *ngIf="cart.items.length > 0">
+      <div>Total for this order is $ {{cart.total}}</div>
+  </ion-card-content>
  
     
 </ion-card>
 <ion-card>
   <ion-card-content>
-  	<div>Total for this order is $ {{getCartTotal()}}</div>
-   <button ion-button full (click)="proceedToCheckout()"
+  	
+   <button ion-button full 
+      (click)="proceedToCheckout()"
       [disabled]="0 === cart.items.length">Checkout</button>
     </ion-card-content>
 </ion-card>

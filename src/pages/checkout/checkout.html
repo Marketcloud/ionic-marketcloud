@@ -1,0 +1,144 @@
+<!--
+  Generated template for the CheckoutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<style type="text/css">
+  .hosted-field {
+    margin: 10px;
+  border: 0px;
+  border-bottom: 2px solid #ccc;
+  height: 32px;
+  -webkit-transition: border-color 160ms;
+  transition: border-color 160ms;
+}
+
+#credit-card-number.braintree-hosted-fields-focused {
+  border-color: #777;
+}
+
+#credit-card-number.braintree-hosted-fields-invalid {
+  border-color: tomato;
+}
+
+#credit-card-number.braintree-hosted-fields-valid {
+  border-color: limegreen;
+}
+</style>
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>checkout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content>
+  <div padding>
+  <ion-segment [(ngModel)]="currentStep">
+    <ion-segment-button value="Address">
+      Address
+    </ion-segment-button>
+    <ion-segment-button value="Payment">
+      Payment
+    </ion-segment-button>
+    <ion-segment-button value="Review">
+      Review
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+
+
+
+  <ion-list [hidden]="currentStep !== 'Address'">
+
+    <ion-item>
+      <ion-label fixed>Email address</ion-label>
+      <ion-input type="email" placeholder="john@example.com"  (ngModel)="address.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Full name</ion-label>
+      <ion-input type="text" placeholder="John Doe" (ngModel)="address.full_name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Country</ion-label>
+      <ion-input type="text" placeholder="Moon" (ngModel)="address.country"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>State</ion-label>
+      <ion-input type="text" placeholder="Dark side of the moon"  (ngModel)="address.state"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>City</ion-label>
+      <ion-input type="text" placeholder="Hidden City"  (ngModel)="address.city"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Postal code</ion-label>
+      <ion-input type="text" placeholder="1234"  (ngModel)="address.postal_code"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Address</ion-label>
+      <ion-input type="text" placeholder="Evergreen terrace 123"  (ngModel)="address.address1"></ion-input>
+    </ion-item>
+
+   
+
+  </ion-list>
+
+
+
+
+ <form id="payment-form" method="post" action="/" [hidden]="currentStep !== 'Payment'">
+      
+      <label for="credit-card-number">Card number</label>
+      <div id="credit-card-number" class="hosted-field">
+      </div>
+   
+      <label for="cvv">CVV</label>
+      <div id="cvv" class="hosted-field"></div>
+  
+      <label for="expiration-date">Expiration date</label>
+      <div id="expiration-date" class="hosted-field"></div>
+   
+     
+        <input type="submit" id="submitButton" style="visibility: hidden;">
+   
+</form>
+
+
+
+  <ion-list [hidden]="currentStep !== 'Review'">
+    <ion-item>Review</ion-item>
+  </ion-list>
+
+
+
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    
+      <button ion-button color="primary" block (click)=proceedToNextStep() *ngIf="currentStep !== 'Review'">
+        Proceed
+      </button>
+
+      <button ion-button color="primary" block (click)=completeCheckout() *ngIf="currentStep === 'Review'">
+        Complete checkout
+      </button>
+    
+  </ion-toolbar>
+</ion-footer>
+

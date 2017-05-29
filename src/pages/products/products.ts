@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { MarketcloudService } from '../../providers/marketcloud-service'; 
 import { ItemPage } from '../item/item';
+import { CartPage } from '../cart/cart';
 
 /*
   Generated class for the Products page.
@@ -53,6 +54,10 @@ export class ProductsPage {
   	this.navCtrl.push(ItemPage,{
   		product : product
   	})
+  }
+
+  viewCart() {
+    this.navCtrl.push(CartPage)
   }
 
 }
