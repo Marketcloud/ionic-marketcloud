@@ -1,8 +1,10 @@
-# Ionic2 Marketcloud shopping app
+# Ionic Marketcloud shopping app
 ![Marketcloud](http://beta.marketcloud.it/img/logo/new_with_text.png)
 
+Build a serverless shopping app with Ionic and Marketcloud
+
 ## Documentation
-This project is used in our tutorial series about building a shopping app with Ionic2 and [Marketcloud](https:/www.marketcloud.it) as backend.
+This project is used in our tutorial series about building a shopping app with Ionic and [Marketcloud](https:/www.marketcloud.it) as backend.
 
 ## Installation
 
@@ -11,9 +13,9 @@ This project is used in our tutorial series about building a shopping app with I
 #You will need ionic and cordova
 npm i -g ionic cordova
 
-git clone https://github.com/Marketcloud/ionic2-marketcloud-starter.git
+git clone https://github.com/Marketcloud/ionic-marketcloud.git
 
-cd ionic2-marketcloud-starter
+cd ionic-marketcloud
 
 npm install
 ```
